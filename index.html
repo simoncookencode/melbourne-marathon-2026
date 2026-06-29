@@ -1006,6 +1006,145 @@
     margin-bottom: 10px;
   }
 
+
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 768px) {
+
+    /* Hero */
+    .hero { padding: 24px 16px 20px; }
+    .hero-name { font-size: 32px !important; }
+    .hero-meta { gap: 16px; }
+    .hero-stat-value { font-size: 20px; }
+    .hero-divider { display: none; }
+
+    /* Nav */
+    .nav { padding: 0 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .nav-tab { padding: 12px 12px; font-size: 11px; white-space: nowrap; }
+
+    /* Sections */
+    .section { padding: 20px 16px 40px; }
+    .section-title { font-size: 24px; }
+
+    /* Overview glance grid */
+    .glance-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Activity summary */
+    .activity-summary { grid-template-columns: 1fr 1fr; }
+    .act-sum-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .act-sum-value { font-size: 36px; }
+
+    /* Weekly structure */
+    .structure-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+
+    /* ── SCHEDULE - horizontal scroll ── */
+    #tab-schedule .week-block { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    #tab-schedule .week-header { min-width: 780px; }
+    #tab-schedule .week-sessions { min-width: 780px; }
+    #tab-schedule .actual-row { min-width: 780px; }
+    .scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--grey-mid);
+      margin-bottom: 12px;
+      padding: 6px 0;
+    }
+    .scroll-hint-arrow {
+      font-size: 16px;
+      color: var(--orange);
+      animation: nudge 1.5s ease-in-out infinite;
+    }
+    @keyframes nudge {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+    }
+
+    /* Phase header */
+    .phase-header { font-size: 11px; padding: 6px 12px; }
+
+    /* ── GYM - horizontal scroll ── */
+    .gym-split { grid-template-columns: 1fr; gap: 16px; }
+    .gym-panel { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .gym-exercise { min-width: 500px; }
+    .gym-section-label { min-width: 500px; }
+    .progression-note { margin: 8px 0; min-width: 500px; }
+
+    /* ── BODY & FUEL ── */
+    .body-fuel-grid { grid-template-columns: 1fr; gap: 16px; }
+    .weight-chart-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .calorie-day-strip { min-width: 500px; }
+    .macro-grid { grid-template-columns: 1fr; }
+    .protein-week-grid { grid-template-columns: repeat(7, 1fr); }
+    .protein-tracker-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* ── ACCORDION ── */
+    .accordion-title { font-size: 13px; }
+
+    /* Meal guide */
+    .meal-row { grid-template-columns: 1fr 60px; gap: 8px; }
+    .meal-detail { display: none; }
+
+    /* Race weight target */
+    .race-weight-target { grid-template-columns: 1fr 1fr; }
+
+    /* Glance cards */
+    .glance-card { padding: 10px 12px; }
+    .glance-card-value { font-size: 14px; }
+
+    /* Change items */
+    .change-item { grid-template-columns: 1fr; gap: 6px; }
+
+    /* Week label sizing */
+    .week-num { font-size: 16px; }
+    .week-date-range { font-size: 9px; }
+    .week-total { font-size: 11px; }
+
+    /* Session cells */
+    .session-label { font-size: 10px; }
+    .session-km { font-size: 15px; }
+    .session-detail { font-size: 9px; }
+    .day-name { font-size: 10px; }
+    .day-date { font-size: 9px; }
+
+    /* Stats row */
+    #stats-row { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-name { font-size: 26px !important; line-height: 1.1 !important; }
+    .glance-grid { grid-template-columns: 1fr; }
+    .activity-summary { grid-template-columns: 1fr 1fr; }
+    .structure-grid { grid-template-columns: 1fr; }
+    .race-weight-target { grid-template-columns: 1fr 1fr; }
+  }
+
+
+  /* ── COLLAPSIBLE WEEKS ── */
+  .week-block { cursor: default; }
+  .week-header { cursor: pointer; user-select: none; transition: opacity 0.15s; }
+  .week-header:hover { opacity: 0.9; }
+  .week-sessions { transition: max-height 0.3s ease, opacity 0.3s ease; overflow: hidden; }
+  .week-sessions.collapsed { max-height: 0 !important; opacity: 0; }
+  .actual-row { transition: max-height 0.3s ease, opacity 0.3s ease; overflow: hidden; }
+  .actual-row.collapsed { max-height: 0 !important; opacity: 0; }
+  .week-note { transition: max-height 0.3s ease, opacity 0.3s ease; overflow: hidden; }
+  .week-note.collapsed { max-height: 0 !important; opacity: 0; padding-top: 0; padding-bottom: 0; border: none; }
+  .week-toggle-hint {
+    font-size: 10px; color: rgba(255,255,255,0.35);
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 4px 14px 4px 0; text-align: right; min-width: 110px;
+    align-self: center;
+  }
+  .week-header.collapsed-header .week-toggle-hint::after { content: 'TAP TO EXPAND'; }
+  .week-header:not(.collapsed-header) .week-toggle-hint::after { content: 'TAP TO CLOSE'; }
+  .week-header.current-week { border-left: 3px solid var(--orange); }
+  .current-week-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--orange);
+    margin-top: 3px;
+  }
+
   @media print {
     .nav { display: none; }
     .section { display: block !important; page-break-before: always; }
@@ -1155,6 +1294,7 @@
     <div class="section-title">Training <span>Schedule</span></div>
     <div class="section-sub">15 weeks, 29 June – 11 October 2026. Yellow header = cutback week. Teal = peak long run.</div>
     <div class="section-divider"></div>
+    <div class="scroll-hint"><span class="scroll-hint-arrow">→</span> Swipe each week to see Saturday and Sunday</div>
 
     <div class="phase-legend">
       <div class="legend-item"><div class="legend-dot" style="background:#2B6EA8"></div> Phase 1 — Base (Wks 1–4)</div>
@@ -1173,6 +1313,7 @@
     <div class="section-title">Gym <span>Programs</span></div>
     <div class="section-sub">Two sessions per week. Sunday: lower body + prehab. Tuesday night: upper body + core.</div>
     <div class="section-divider"></div>
+    <div class="scroll-hint"><span class="scroll-hint-arrow">→</span> Swipe each section to see full details</div>
 
     <div class="gym-split">
       <!-- SUNDAY -->
@@ -1656,6 +1797,13 @@ function showTab(id) {
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   event.target.classList.add('active');
+  if (id === 'schedule') {
+    setTimeout(() => {
+      const currentHeader = document.getElementById(`week-header-${currentWeekIndex}`);
+      if (currentHeader) currentHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+  if (id === 'weight') setTimeout(() => renderWeightChart(weightLog), 50);
 }
 
 // ── WEEK DATA ───────────────────────────────────────────────
@@ -1876,12 +2024,14 @@ function buildSchedule() {
     const totalKm = week.days.reduce((s,d) => s + d.km, 0);
 
     html += `<div class="week-block">`;
-    html += `<div class="${headerClass}">`;
+    const isCurrentWeek = wi === currentWeekIndex;
+    html += `<div class="${headerClass}${isCurrentWeek ? ' current-week' : ''}" onclick="toggleWeek(${wi})" id="week-header-${wi}">`;
     html += `<div class="week-label">
       <div class="week-num">WK ${week.n}</div>
       <div class="week-date-range">${dates[0]} – ${dates[6]}</div>
       <div class="week-total">~${week.total}km</div>
       ${week.cutback ? '<div class="week-cutback-badge">↓ Cutback</div>' : ''}
+      ${isCurrentWeek ? '<div class="current-week-badge">● THIS WEEK</div>' : ''}
     </div>`;
 
     DAY_NAMES.forEach((day, di) => {
@@ -1890,9 +2040,10 @@ function buildSchedule() {
         <div class="day-date">${dates[di]}</div>
       </div>`;
     });
+    html += `<div class="week-toggle-hint"></div>`;
     html += `</div>`; // week-header
 
-    html += `<div class="week-sessions">`;
+    html += `<div class="week-sessions" id="week-sessions-${wi}">`;
     // Phase stripe
     const stripeColors = ['','#BDD7EE','#C6EFCE','#FFEB9C','#FFC7CE'];
     html += `<div class="week-phase-stripe" style="background:${stripeColors[week.phase]}"></div>`;
@@ -1926,7 +2077,7 @@ function buildSchedule() {
       .replace(/TAPER WEEK (\d) of (\d)/, '<strong>TAPER WEEK $1 of $2</strong>')
       .replace('RECOVERY WEEK', '<strong>RECOVERY WEEK</strong>')
       .replace('RACE WEEK', '<strong>🏁 RACE WEEK</strong>');
-    html += `<div class="${noteClass}">${noteText}</div>`;
+    html += `<div class="${noteClass}" id="week-note-${wi}">${noteText}</div>`;
 
     html += `</div>`; // week-block
   });
@@ -2233,6 +2384,7 @@ async function syncStrava() {
 // Auto-sync on load
 window.addEventListener('load', () => {
   buildSchedule();
+  initWeekCollapse();
   syncStrava();
 });
 
@@ -2316,6 +2468,60 @@ function renderProtein() {
 
 renderProtein();
 
+
+
+// ── WEEK TOGGLE ──────────────────────────────────────────────
+// Calculate current week index
+function getCurrentWeekIndex() {
+  const today = new Date();
+  const blockStart = new Date('2026-06-29');
+  const diffDays = Math.floor((today - blockStart) / (1000 * 60 * 60 * 24));
+  if (diffDays < 0) return 0; // before block starts, show week 1
+  const weekIndex = Math.floor(diffDays / 7);
+  return Math.min(weekIndex, 14); // cap at week 15
+}
+
+const currentWeekIndex = getCurrentWeekIndex();
+
+function toggleWeek(wi) {
+  const sessions = document.getElementById(`week-sessions-${wi}`);
+  const actual = document.getElementById(`actual-row-${wi}`);
+  const note = document.getElementById(`week-note-${wi}`);
+  const header = document.getElementById(`week-header-${wi}`);
+  if (!sessions) return;
+
+  const isCollapsed = sessions.classList.contains('collapsed');
+  sessions.classList.toggle('collapsed', !isCollapsed);
+  if (actual) actual.classList.toggle('collapsed', !isCollapsed);
+  if (note) note.classList.toggle('collapsed', !isCollapsed);
+  if (header) header.classList.toggle('collapsed-header', !isCollapsed);
+}
+
+function initWeekCollapse() {
+  // Small delay to ensure buildSchedule has finished writing to DOM
+  setTimeout(() => {
+    WEEKS.forEach((week, wi) => {
+      if (wi !== currentWeekIndex) {
+        const sessions = document.getElementById(`week-sessions-${wi}`);
+        const actual = document.getElementById(`actual-row-${wi}`);
+        const note = document.getElementById(`week-note-${wi}`);
+        const header = document.getElementById(`week-header-${wi}`);
+        if (sessions) sessions.classList.add('collapsed');
+        if (actual) actual.classList.add('collapsed');
+        if (note) note.classList.add('collapsed');
+        if (header) header.classList.add('collapsed-header');
+      }
+    });
+
+    // Scroll current week into view
+    setTimeout(() => {
+      const currentHeader = document.getElementById(`week-header-${currentWeekIndex}`);
+      if (currentHeader) {
+        currentHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 200);
+  }, 50);
+}
 
 // ── ACCORDION ────────────────────────────────────────────────
 function toggleAccordion(header) {
@@ -2632,14 +2838,7 @@ renderMissed();
 updatePhaseLabel();
 updateWeightToGo();
 
-// Redraw chart when weight tab becomes visible
-document.querySelectorAll('.nav-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    if (tab.textContent.includes('Weight')) {
-      setTimeout(() => renderWeightChart(weightLog), 50);
-    }
-  });
-});
+// Chart redrawn in showTab
 
 </script>
 </div>
